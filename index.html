@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRAX Esports - Offizielle Website</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Offizielle Website des DRAX Esports Fortnite Clans. Erfahre mehr über unsere Top-Spieler, Neuigkeiten, wie du beitreten kannst und unsere Mission, die Fortnite-Arena zu dominieren.">
+    <meta name="keywords" content="DRAX Esports, Fortnite Clan, Fortnite Esports, Gaming Clan, Fortnite Team, PR Fortnite, Häufig gestellte Fragen, Join Clan">
+
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter for clean typography -->
@@ -31,6 +35,14 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Keyframe for subtle fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
@@ -48,8 +60,10 @@
             <nav class="mt-4 md:mt-0">
                 <ul class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6 text-lg">
                     <li><a href="#home" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">Home</a></li>
+                    <li><a href="#news" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">News</a></li>
                     <li><a href="#most-pr" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">Most PR</a></li>
                     <li><a href="#about" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">Über Uns</a></li>
+                    <li><a href="#join-us" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">Beitreten</a></li>
                     <li><a href="#faq" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">FAQ</a></li>
                     <li><a href="#contact" class="text-gray-300 hover:text-red-600 transition duration-300 font-semibold">Kontakt</a></li>
                 </ul>
@@ -71,19 +85,19 @@
                 <p class="text-xl md:text-2xl font-medium mb-8 animate-fade-in-up">
                     Dominieren die Fortnite-Arena. Leidenschaft. Präzision. Sieg.
                 </p>
-                <a href="#most-pr" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-bounce-in">
-                    Unsere Top PRs entdecken <i class="fas fa-arrow-right ml-2"></i>
+                <a href="#join-us" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-bounce-in">
+                    Jetzt beitreten <i class="fas fa-user-plus ml-2"></i>
                 </a>
             </div>
         </section>
 
-        <!-- News/Updates Section (Example) -->
+        <!-- News/Updates Section -->
         <section id="news" class="py-16 bg-gray-900">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12">Neueste Updates</h2>
+                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12 animate-fade-in">Neueste Updates</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- News Item 1 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in">
                         <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Turnier+Sieg" alt="Turnier Sieg" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-100 mb-2">Sieg beim FNCS Qualifikationsspiel!</h3>
@@ -93,7 +107,7 @@
                         </div>
                     </div>
                     <!-- News Item 2 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.1s;">
                         <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Neuer+Spieler" alt="Neuer Spieler" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-100 mb-2">Willkommen, [Spielername]!</h3>
@@ -103,7 +117,7 @@
                         </div>
                     </div>
                     <!-- News Item 3 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.2s;">
                         <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Community+Event" alt="Community Event" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-100 mb-2">Community-Turnier Ankündigung</h3>
@@ -119,10 +133,10 @@
         <!-- Most PR Section -->
         <section id="most-pr" class="py-16 bg-gray-800">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12">Unsere Top PRs</h2>
+                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12 animate-fade-in">Unsere Top PRs</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- PR Item 1 - Profilbild aktualisiert -->
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300 animate-fade-in">
                         <!-- Profilbild wurde mit der von dir bereitgestellten Discord-URL aktualisiert -->
                         <img src="https://media.discordapp.net/attachments/1398774891515347074/1398840509925163009/ZYFo8u2.jpg?ex=6886d33e&is=688581be&hm=214ab142ed424dcf605949b7c1e6c15f664de58fea06aa5d6599534cbd3e27d8" alt="PR Player 1 Profilbild" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                         <h3 class="text-2xl font-bold text-gray-100">t1mxyz</h3>
@@ -135,12 +149,12 @@
                         </div>
                     </div>
                     <!-- PR Item 2 - Profilbild aktualisiert -->
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.1s;">
                         <!-- Profilbild wurde mit der von dir bereitgestellten Discord-URL aktualisiert -->
                         <img src="https://media.discordapp.net/attachments/1398329562424807517/1398842342299140230/99E5F748-9D08-4CAD-85EB-76CBC606674B.jpg?ex=6886d4f3&is=68858373&hm=d945e37474068b01e979cde901ba61e05a29db48b7c4999e7f78f56a98f27429" alt="PR Player 2 Profilbild" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                         <h3 class="text-2xl font-bold text-gray-100">drax_woyxed</h3>
                         <p class="text-red-500 font-semibold mb-3">-1 PR Punkte</p>
-                        <p class="text-gray-400 text-sm mb-4">Unendlicher SIGMA       nicht</p>
+                        <p class="text-gray-400 text-sm mb-4">Unendlicher SIGMA nicht</p>
                         <div class="flex justify-center space-x-4">
                             <a href="YOUR_TWITCH_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300"><i class="fab fa-twitch text-xl"></i></a>
                             <a href="YOUR_YOUTUBE_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300"><i class="fab fa-youtube text-xl"></i></a>
@@ -148,7 +162,7 @@
                         </div>
                     </div>
                     <!-- PR Item 3 -->
-                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300">
+                    <div class="bg-gray-900 rounded-lg shadow-xl p-6 text-center transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.2s;">
                         <!-- To add a profile picture, replace the 'src' URL below with the direct URL to your player's image. -->
                         <img src="https://placehold.co/150x150/1f2937/d1d5db?text=PR+Player+3" alt="PR Player 3" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-600">
                         <h3 class="text-2xl font-bold text-gray-100">???</h3>
@@ -167,8 +181,8 @@
         <!-- About Us Section -->
         <section id="about" class="py-16 bg-gray-900">
             <div class="container mx-auto px-6 max-w-4xl">
-                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12">Über Uns</h2>
-                <div class="bg-gray-800 rounded-lg shadow-xl p-8">
+                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12 animate-fade-in">Über Uns</h2>
+                <div class="bg-gray-800 rounded-lg shadow-xl p-8 animate-fade-in">
                     <p class="text-lg text-gray-300 leading-relaxed mb-6">
                         DRAX Esports wurde mit der Vision gegründet, eine führende Kraft im Fortnite-Esports zu werden. Wir sind mehr als nur ein Team; wir sind eine Familie, die durch die Leidenschaft für das Spiel und den Wunsch nach Exzellenz verbunden ist. Unser Fokus liegt auf kontinuierlichem Training, strategischer Entwicklung und der Pflege eines positiven und unterstützenden Umfelds.
                     </p>
@@ -184,13 +198,42 @@
             </div>
         </section>
 
-        <!-- FAQ Section (retained from previous version) -->
-        <section id="faq" class="py-16 bg-gray-800">
+        <!-- Join Us Section -->
+        <section id="join-us" class="py-16 bg-gray-800 text-center">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h2 class="text-4xl font-extrabold text-gray-100 mb-8 animate-fade-in">Werde Teil von DRAX Esports!</h2>
+                <p class="text-xl text-gray-300 mb-8 animate-fade-in" style="animation-delay: 0.1s;">
+                    Bist du bereit, deine Fortnite-Fähigkeiten auf die nächste Stufe zu heben und Teil einer engagierten Community zu werden? Wir suchen talentierte und motivierte Spieler, die unsere Leidenschaft für den Esports teilen.
+                </p>
+                <div class="bg-gray-900 rounded-lg shadow-xl p-8 animate-fade-in" style="animation-delay: 0.2s;">
+                    <h3 class="text-3xl font-bold text-red-600 mb-4">Was wir suchen:</h3>
+                    <ul class="list-disc list-inside text-left text-lg text-gray-300 mb-6 mx-auto max-w-xl">
+                        <li>Engagierte Fortnite-Spieler mit hohem Skill-Level.</li>
+                        <li>Teamfähigkeit und gute Kommunikation.</li>
+                        <li>Bereitschaft zu regelmäßigem Training und Turnier-Teilnahme.</li>
+                        <li>Positive Einstellung und Sportsgeist.</li>
+                    </ul>
+                    <h3 class="text-3xl font-bold text-red-600 mb-4">Was wir bieten:</h3>
+                    <ul class="list-disc list-inside text-left text-lg text-gray-300 mb-8 mx-auto max-w-xl">
+                        <li>Ein wettbewerbsorientiertes und unterstützendes Umfeld.</li>
+                        <li>Möglichkeiten zur Skill-Entwicklung und Coaching.</li>
+                        <li>Zugang zu einer aktiven und freundlichen Community.</li>
+                        <li>Teilnahme an internen und externen Turnieren.</li>
+                    </ul>
+                    <a href="https://discord.gg/FcDAef3vYP" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 text-xl">
+                        <i class="fab fa-discord mr-3"></i> Jetzt auf Discord bewerben!
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-16 bg-gray-900">
             <div class="container mx-auto p-6 md:p-10 max-w-3xl mx-auto">
-                <h2 class="text-4xl font-extrabold text-red-600 mb-8 text-center">Häufig gestellte Fragen (FAQ)</h2>
+                <h2 class="text-4xl font-extrabold text-red-600 mb-8 text-center animate-fade-in">Häufig gestellte Fragen (FAQ)</h2>
 
                 <!-- FAQ Item 1 -->
-                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden animate-fade-in" style="animation-delay: 0.1s;">
                     <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out rounded-t-lg" aria-expanded="false">
                         Was ist DRAX Esports?
                         <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
@@ -201,7 +244,7 @@
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden animate-fade-in" style="animation-delay: 0.2s;">
                     <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
                         Wie kann ich DRAX Esports beitreten?
                         <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
@@ -212,7 +255,7 @@
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden animate-fade-in" style="animation-delay: 0.3s;">
                     <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
                         Welche Anforderungen gibt es, um Mitglied zu werden?
                         <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
@@ -223,7 +266,7 @@
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden animate-fade-in" style="animation-delay: 0.4s;">
                     <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
                         Wo kann ich eure Spieler streamen oder eure Inhalte sehen?
                         <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
@@ -234,7 +277,7 @@
                 </div>
 
                 <!-- FAQ Item 5 -->
-                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden animate-fade-in" style="animation-delay: 0.5s;">
                     <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
                         Wie kann ich DRAX Esports unterstützen?
                         <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
@@ -245,7 +288,7 @@
                 </div>
 
                 <!-- Call to Action / Discord Link -->
-                <div class="text-center mt-8">
+                <div class="text-center mt-8 animate-fade-in" style="animation-delay: 0.6s;">
                     <a href="https://discord.gg/FcDAef3vYP" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out text-lg">
                         <i class="fab fa-discord mr-2"></i> Tritt unserem Discord bei!
                     </a>
@@ -258,8 +301,8 @@
         <!-- Contact Section -->
         <section id="contact" class="py-16 bg-gray-900">
             <div class="container mx-auto px-6 max-w-4xl">
-                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12">Kontaktiere Uns</h2>
-                <div class="bg-gray-800 rounded-lg shadow-xl p-8 text-center">
+                <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12 animate-fade-in">Kontaktiere Uns</h2>
+                <div class="bg-gray-800 rounded-lg shadow-xl p-8 text-center animate-fade-in" style="animation-delay: 0.1s;">
                     <p class="text-lg text-gray-300 leading-relaxed mb-6">
                         Hast du Fragen, möchtest du uns sponsern oder mit uns zusammenarbeiten? Kontaktiere uns über die folgenden Kanäle.
                     </p>

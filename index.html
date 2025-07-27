@@ -43,6 +43,41 @@
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* Styles for the News Slider */
+        .slider-container {
+            position: relative;
+            max-width: 900px; /* Adjust as needed */
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slider-nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(239, 68, 68, 0.7); /* red-600 with opacity */
+            color: white;
+            padding: 0.75rem 0.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+        .slider-nav-button:hover {
+            background-color: rgba(220, 38, 38, 0.9); /* red-700 with opacity */
+        }
+        .slider-nav-button.left { left: 0.5rem; }
+        .slider-nav-button.right { right: 0.5rem; }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
@@ -91,41 +126,47 @@
             </div>
         </section>
 
-        <!-- News/Updates Section -->
+        <!-- News/Updates Section with Slider -->
         <section id="news" class="py-16 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="text-4xl font-extrabold text-gray-100 text-center mb-12 animate-fade-in">Neueste Updates</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- News Item 1 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in">
-                        <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Turnier+Sieg" alt="Turnier Sieg" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-100 mb-2">Sieg beim FNCS Qualifikationsspiel!</h3>
-                            <p class="text-gray-400 text-sm mb-4">20. Juli 2025</p>
-                            <p class="text-gray-300">Unser Team hat sich erfolgreich für die nächste Runde der FNCS qualifiziert! Eine unglaubliche Leistung von unseren Spielern.</p>
-                            <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
+                
+                <div class="slider-container">
+                    <div class="slider-wrapper" id="news-slider-wrapper">
+                        <!-- News Item 1 -->
+                        <div class="slider-item bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://placehold.co/900x500/2d3748/a0aec0?text=Turnier+Sieg" alt="Turnier Sieg" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-100 mb-2">Sieg beim FNCS Qualifikationsspiel!</h3>
+                                <p class="text-gray-400 text-sm mb-4">20. Juli 2025</p>
+                                <p class="text-gray-300">Unser Team hat sich erfolgreich für die nächste Runde der FNCS qualifiziert! Eine unglaubliche Leistung von unseren Spielern.</p>
+                                <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                        <!-- News Item 2 -->
+                        <div class="slider-item bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://placehold.co/900x500/2d3748/a0aec0?text=Neuer+Spieler" alt="Neuer Spieler" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-100 mb-2">Willkommen, [Spielername]!</h3>
+                                <p class="text-gray-400 text-sm mb-4">15. Juli 2025</p>
+                                <p class="text-gray-300">Wir freuen uns, [Spielername] als neuestes Mitglied unseres Fortnite-Rosters begrüßen zu dürfen. Erfahrt mehr über unser neues Talent!</p>
+                                <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                        <!-- News Item 3 -->
+                        <div class="slider-item bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+                            <img src="https://placehold.co/900x500/2d3748/a0aec0?text=Community+Event" alt="Community Event" class="w-full h-64 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-semibold text-gray-100 mb-2">Community-Turnier Ankündigung</h3>
+                                <p class="text-gray-400 text-sm mb-4">10. Juli 2025</p>
+                                <p class="text-gray-300">Macht euch bereit! Wir veranstalten unser erstes Community-Turnier mit tollen Preisen. Meldet euch jetzt an!</p>
+                                <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <!-- News Item 2 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.1s;">
-                        <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Neuer+Spieler" alt="Neuer Spieler" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-100 mb-2">Willkommen, [Spielername]!</h3>
-                            <p class="text-gray-400 text-sm mb-4">15. Juli 2025</p>
-                            <p class="text-gray-300">Wir freuen uns, [Spielername] als neuestes Mitglied unseres Fortnite-Rosters begrüßen zu dürfen. Erfahrt mehr über unser neues Talent!</p>
-                            <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <!-- News Item 3 -->
-                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:scale-105 transition duration-300 animate-fade-in" style="animation-delay: 0.2s;">
-                        <img src="https://placehold.co/600x350/2d3748/a0aec0?text=Community+Event" alt="Community Event" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-100 mb-2">Community-Turnier Ankündigung</h3>
-                            <p class="text-gray-400 text-sm mb-4">10. Juli 2025</p>
-                            <p class="text-gray-300">Macht euch bereit! Wir veranstalten unser erstes Community-Turnier mit tollen Preisen. Meldet euch jetzt an!</p>
-                            <a href="#" class="text-red-600 hover:text-red-500 font-semibold mt-4 block">Mehr erfahren <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
+                    <!-- Slider Navigation Buttons -->
+                    <button class="slider-nav-button left" onclick="moveSlider(-1)">&#10094;</button>
+                    <button class="slider-nav-button right" onclick="moveSlider(1)">&#10095;</button>
                 </div>
             </div>
         </section>
@@ -350,20 +391,67 @@
     <!-- JavaScript for FAQ Accordion Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // FAQ Accordion Logic
             const faqQuestions = document.querySelectorAll('.faq-question');
-
             faqQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const answer = question.nextElementSibling;
                     const icon = question.querySelector('i');
-
-                    // Toggle the 'active' class on the answer to show/hide it
                     answer.classList.toggle('active');
-                    // Toggle the 'aria-expanded' attribute for accessibility
                     const isExpanded = question.getAttribute('aria-expanded') === 'true';
                     question.setAttribute('aria-expanded', !isExpanded);
-                    // Rotate the chevron icon
                     icon.classList.toggle('rotate-180');
+                });
+            });
+
+            // News Slider Logic
+            const sliderWrapper = document.getElementById('news-slider-wrapper');
+            let currentIndex = 0;
+            const items = sliderWrapper.children;
+            const totalItems = items.length;
+
+            function updateSlider() {
+                const offset = -currentIndex * 100;
+                sliderWrapper.style.transform = `translateX(${offset}%)`;
+            }
+
+            // Function to move slider (called by buttons)
+            window.moveSlider = function(direction) {
+                currentIndex += direction;
+                if (currentIndex >= totalItems) {
+                    currentIndex = 0;
+                } else if (currentIndex < 0) {
+                    currentIndex = totalItems - 1;
+                }
+                updateSlider();
+            }
+
+            // Optional: Auto-slide
+            // setInterval(() => {
+            //     moveSlider(1);
+            // }, 5000); // Change slide every 5 seconds
+
+            // Back to Top Button Logic
+            const backToTopButton = document.createElement('button');
+            backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            backToTopButton.className = 'fixed bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg transition-opacity duration-300 opacity-0 z-40';
+            backToTopButton.style.display = 'none'; // Hidden by default
+            document.body.appendChild(backToTopButton);
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px
+                    backToTopButton.style.display = 'block';
+                    setTimeout(() => backToTopButton.style.opacity = '1', 10); // Fade in
+                } else {
+                    backToTopButton.style.opacity = '0';
+                    setTimeout(() => backToTopButton.style.display = 'none', 300); // Fade out then hide
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
         });

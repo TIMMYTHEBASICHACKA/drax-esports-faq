@@ -11,7 +11,7 @@
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter for clean typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for social media icons and general icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -28,13 +28,30 @@
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         console.log("Frontend: Initializing Firebase with appId:", appId);
-        console.log("Frontend: Firebase config:", firebaseConfig);
+        console.log("Frontend: Raw Firebase config string:", typeof __firebase_config !== 'undefined' ? __firebase_config : 'undefined');
+        console.log("Frontend: Parsed Firebase config object:", firebaseConfig);
+        console.log("Frontend: Project ID from config:", firebaseConfig.projectId);
         console.log("Frontend: Initial auth token present:", !!initialAuthToken); // Check if token exists
 
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        let app;
+        let db;
+        let auth;
+
+        try {
+            if (!firebaseConfig.projectId) {
+                throw new Error("Firebase 'projectId' not found in configuration. Please ensure __firebase_config is correctly set.");
+            }
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            console.log("Frontend: Firebase app initialized successfully.");
+        } catch (error) {
+            console.error("Frontend: Error during Firebase app initialization:", error);
+            document.getElementById('pr-leaderboard-container').innerHTML = '<p class="text-red-500 text-center">Fehler: Firebase konnte nicht initialisiert werden. Projekt-ID fehlt.</p>';
+            // Prevent further execution if Firebase init fails
+            throw error;
+        }
 
         // Sign in anonymously or with custom token
         async function authenticateAndLoadPR() {
@@ -49,7 +66,7 @@
                 loadPRLeaderboard(); // Load leaderboard after authentication
             } catch (error) {
                 console.error("Frontend: Firebase authentication failed:", error);
-                document.getElementById('pr-leaderboard-container').innerHTML = '<p class="text-red-500 text-center">Fehler beim Laden des Leaderboards. Bitte versuchen Sie es später erneut.</p>';
+                document.getElementById('pr-leaderboard-container').innerHTML = '<p class="text-red-500 text-center">Fehler beim Laden des Leaderboards. Authentifizierung fehlgeschlagen.</p>';
             }
         }
 
@@ -57,6 +74,14 @@
         function loadPRLeaderboard() {
             const prLeaderboardContainer = document.getElementById('pr-leaderboard-container');
             const prCollectionPath = `artifacts/${appId}/public/data/pr_leaderboard`;
+            
+            // Ensure db is initialized before proceeding
+            if (!db) {
+                console.error("Frontend: Firestore DB not initialized. Cannot load PR leaderboard.");
+                prLeaderboardContainer.innerHTML = '<p class="text-red-500 text-center">Fehler: Datenbank nicht bereit.</p>';
+                return;
+            }
+
             const prCollectionRef = collection(db, prCollectionPath);
 
             console.log("Frontend: Attempting to load PR from collection:", prCollectionPath);
@@ -530,37 +555,3 @@
 
 </body>
 </html>
-" und da sind keine Most PR
-
-Gerne, ich habe den ausgewählten Code im Canvas überprüft.
-
-Du hast Recht, wenn du sagst, dass "da sind keine Most PR" im HTML-Code selbst. Das ist beabsichtigt, da die "Most PR"-Sektion jetzt **dynamisch von deiner Firestore-Datenbank geladen** werden soll.
-
-Wenn die Sektion auf deiner Live-Website immer noch leer ist, obwohl dein Discord-Bot PR-Punkte in Firestore speichert, müssen wir die Kommunikation zwischen deiner Website und Firestore debuggen.
-
-**Bitte gehe diese Schritte durch, um das Problem zu diagnostizieren:**
-
-1.  **Öffne deine Website im Browser.**
-2.  **Öffne die Entwicklerkonsole:**
-    * **Rechtsklick** auf eine beliebige Stelle auf der Seite und wähle **"Untersuchen"** (Inspect) oder **"Element untersuchen"** (Inspect Element).
-    * Gehe zum Tab **"Console"** (Konsole).
-3.  **Überprüfe die Konsolenausgabe:**
-    * Siehst du dort Fehlermeldungen (rot markiert)?
-    * Siehst du die `console.log`-Meldungen, die ich hinzugefügt habe? Achte besonders auf:
-        * `Frontend: Initializing Firebase with appId:`
-        * `Frontend: Firebase config:`
-        * `Frontend: Initial auth token present:`
-        * `Frontend: Firebase authenticated successfully.` (oder eine Fehlermeldung zur Authentifizierung)
-        * `Frontend: Attempting to load PR from collection:`
-        * `Frontend: Received Firestore snapshot.`
-        * `Frontend: Found PR entry:`
-        * `Frontend: No PR entries found in Firestore.` (wenn keine Daten geladen werden)
-
-4.  **Überprüfe deine Firestore-Daten direkt:**
-    * Gehe zur Firebase Console: [https://console.firebase.google.com/](https://console.firebase.google.com/)
-    * Wähle dein Projekt (`DRAX-Esports-Leaderboard`).
-    * Gehe zu **"Build" (Entwickeln)** -> **"Firestore Database" (Firestore-Datenbank)**.
-    * Navigiere zu dem Pfad, den dein Bot verwendet: `artifacts` -> `{deine_app_id}` -> `public` -> `data` -> `pr_leaderboard`.
-    * **Siehst du hier die PR-Einträge, die du über Discord hinzugefügt hast?** (z.B. `t1mxyz` mit 1200 Punkten)
-
-**Basierend auf dem, was du in der Konsole siehst und ob die Daten in Firestore vorhanden sind, können wir das Problem weiter eingrenzen.** Bitte teile mir die Ausgaben der Konsole und das Ergebnis deiner Überprüfung in der Firebase Console m

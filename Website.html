@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRAX Esports - Häufig gestellte Fragen (FAQ)</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Style for the collapsible FAQ answers */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-answer.active {
+            max-height: 500px; /* Adjust as needed, should be larger than max possible content */
+            transition: max-height 0.3s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300 min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-gray-800 p-4 shadow-lg">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <!-- DRAX Esports Logo -->
+                <!-- IMPORTANT: Replace this placeholder image URL with your actual DRAX Esports logo URL -->
+                <img src="https://placehold.co/100x40/000000/CCCCCC?text=DRAX+ESPORTS" alt="DRAX Esports Logo" class="h-10 md:h-12 rounded-lg">
+                <h1 class="text-3xl font-bold text-gray-100">DRAX Esports</h1>
+            </div>
+            <!-- Optional: Add a simple navigation if needed later, for now just a title -->
+        </div>
+    </header>
+
+    <!-- Main Content - FAQ Section -->
+    <main class="flex-grow container mx-auto p-6 md:p-10">
+        <section class="bg-gray-800 p-6 md:p-8 rounded-lg shadow-xl max-w-3xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-red-600 mb-8 text-center">Häufig gestellte Fragen (FAQ)</h2>
+
+            <!-- FAQ Item 1 -->
+            <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out rounded-t-lg" aria-expanded="false">
+                    Was ist DRAX Esports?
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer p-4 text-gray-300 bg-gray-700 border-t border-gray-600">
+                    <p>DRAX Esports ist ein engagierter Fortnite-Esports-Clan, der sich der Förderung von Talenten und dem wettbewerbsorientierten Spielen verschrieben hat. Wir streben danach, in der Fortnite-Szene zu dominieren und eine starke Gemeinschaft aufzubauen.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
+                    Wie kann ich DRAX Esports beitreten?
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer p-4 text-gray-300 bg-gray-700 border-t border-gray-600">
+                    <p>Um DRAX Esports beizutreten, musst du bestimmte Kriterien erfüllen, die auf unserem Discord-Server bekannt gegeben werden. Wir suchen nach engagierten Spielern mit hohem Skill-Level und Teamgeist. Trete unserem Discord bei, um mehr zu erfahren!</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
+                    Welche Anforderungen gibt es, um Mitglied zu werden?
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer p-4 text-gray-300 bg-gray-700 border-t border-gray-600">
+                    <p>Die genauen Anforderungen variieren, beinhalten aber in der Regel ein bestimmtes Skill-Level in Fortnite (z.B. Arena-Punkte, Turnierplatzierungen), eine positive Einstellung, Teamfähigkeit und die Bereitschaft, regelmäßig zu trainieren. Ein Mikrofon und die Teilnahme am Discord sind ebenfalls erforderlich.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
+                    Wo kann ich eure Spieler streamen oder eure Inhalte sehen?
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer p-4 text-gray-300 bg-gray-700 border-t border-gray-600">
+                    <p>Du kannst unsere Spieler oft auf Twitch streamen. Links zu ihren Kanälen und unseren offiziellen YouTube-Kanal für Highlights und VODs findest du in unserem Discord und in den sozialen Medien.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="mb-4 bg-gray-700 rounded-lg overflow-hidden">
+                <button class="faq-question flex justify-between items-center w-full p-4 text-left text-xl font-semibold text-gray-100 hover:bg-gray-600 focus:outline-none focus:bg-gray-600 transition duration-300 ease-in-out" aria-expanded="false">
+                    Wie kann ich DRAX Esports unterstützen?
+                    <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer p-4 text-gray-300 bg-gray-700 border-t border-gray-600">
+                    <p>Du kannst uns unterstützen, indem du unseren Spielern auf Twitch folgst, unsere YouTube-Videos ansiehst, unsere Beiträge in den sozialen Medien teilst und unserem Discord-Server beitrittst, um Teil unserer Community zu sein.</p>
+                </div>
+            </div>
+
+            <!-- Call to Action / Discord Link -->
+            <div class="text-center mt-8">
+                <a href="YOUR_DISCORD_INVITE_LINK_HERE" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out text-lg">
+                    <i class="fab fa-discord mr-2"></i> Tritt unserem Discord bei!
+                </a>
+                <p class="text-gray-400 mt-4 text-sm">Für weitere Fragen oder um mit der Community in Kontakt zu treten.</p>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 p-6 mt-8 shadow-inner">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <!-- Social Media Links -->
+                <a href="YOUR_DISCORD_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-discord text-3xl"></i>
+                </a>
+                <a href="YOUR_TWITTER_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-twitter text-3xl"></i>
+                </a>
+                <a href="YOUR_TWITCH_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-twitch text-3xl"></i>
+                </a>
+                <a href="YOUR_YOUTUBE_LINK" target="_blank" class="text-gray-400 hover:text-red-600 transition duration-300">
+                    <i class="fab fa-youtube text-3xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2025 DRAX Esports. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ Accordion Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+
+                    // Toggle the 'active' class on the answer to show/hide it
+                    answer.classList.toggle('active');
+                    // Toggle the 'aria-expanded' attribute for accessibility
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                    question.setAttribute('aria-expanded', !isExpanded);
+                    // Rotate the chevron icon
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

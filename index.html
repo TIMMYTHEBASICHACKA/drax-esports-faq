@@ -11,7 +11,7 @@
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter for clean typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome for social media icons and general icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -24,8 +24,24 @@
 
         // Global variables provided by the Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        let firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // --- TEMPORARY MANUAL PROJECT_ID OVERRIDE (REMOVE FOR PRODUCTION) ---
+        // If firebaseConfig.projectId is undefined, try to use a hardcoded value.
+        // This is useful for debugging if __firebase_config is not properly passed.
+        // Replace 'YOUR_FIREBASE_PROJECT_ID_HERE' with your actual Project ID from Firebase Console.
+        if (!firebaseConfig.projectId) {
+            console.warn("Frontend: __firebase_config.projectId is missing. Attempting to use hardcoded projectId.");
+            firebaseConfig.projectId = "drax-esports-leaderboard"; // <--- REPLACE WITH YOUR ACTUAL PROJECT ID
+            if (!firebaseConfig.projectId || firebaseConfig.projectId === 'YOUR_FIREBASE_PROJECT_ID_HERE') {
+                 console.error("Frontend: Hardcoded projectId is also missing or placeholder. Please update it.");
+                 // Fallback to a placeholder to prevent app crash, but it won't work.
+                 firebaseConfig.projectId = "placeholder-project-id";
+            }
+        }
+        // --- END TEMPORARY OVERRIDE ---
+
 
         console.log("Frontend: Initializing Firebase with appId:", appId);
         console.log("Frontend: Raw Firebase config string:", typeof __firebase_config !== 'undefined' ? __firebase_config : 'undefined');
@@ -39,8 +55,8 @@
         let auth;
 
         try {
-            if (!firebaseConfig.projectId) {
-                throw new Error("Firebase 'projectId' not found in configuration. Please ensure __firebase_config is correctly set.");
+            if (!firebaseConfig.projectId || firebaseConfig.projectId === 'placeholder-project-id') {
+                throw new Error("Firebase 'projectId' not found in configuration or is a placeholder. Please ensure __firebase_config is correctly set or update hardcoded projectId.");
             }
             app = initializeApp(firebaseConfig);
             db = getFirestore(app);
@@ -48,7 +64,7 @@
             console.log("Frontend: Firebase app initialized successfully.");
         } catch (error) {
             console.error("Frontend: Error during Firebase app initialization:", error);
-            document.getElementById('pr-leaderboard-container').innerHTML = '<p class="text-red-500 text-center">Fehler: Firebase konnte nicht initialisiert werden. Projekt-ID fehlt.</p>';
+            document.getElementById('pr-leaderboard-container').innerHTML = '<p class="text-red-500 text-center">Fehler: Firebase konnte nicht initialisiert werden. Projekt-ID fehlt oder ist falsch.</p>';
             // Prevent further execution if Firebase init fails
             throw error;
         }
@@ -555,3 +571,40 @@
 
 </body>
 </html>
+```
+
+Der Fehler "Uncaught FirebaseError: "projectId" not provided in firebase.initializeApp." auf deiner Webseite bedeutet, dass die Firebase JavaScript SDK nicht korrekt initialisiert werden kann, weil die `projectId` in der Konfiguration fehlt.
+
+Ich habe den Code im Canvas `DRAX Esports Website mit dynamischem PR-Leaderboard (Fehlerbehebung ProjectId)` aktualisiert, um diesen Fehler zu beheben.
+
+**Hier ist die Änderung, die ich vorgenommen habe:**
+
+* **Manuelle `projectId`-Zuweisung:** Ich habe eine Zeile hinzugefügt, die deine `projectId` (`drax-esports-leaderboard`) direkt in die `firebaseConfig` einfügt, falls sie nicht automatisch über die `__firebase_config`-Variable bereitgestellt wird.
+
+    ```javascript
+    // --- TEMPORARY MANUAL PROJECT_ID OVERRIDE (REMOVE FOR PRODUCTION) ---
+    // If firebaseConfig.projectId is undefined, try to use a hardcoded value.
+    // This is useful for debugging if __firebase_config is not properly passed.
+    // Replace 'YOUR_FIREBASE_PROJECT_ID_HERE' with your actual Project ID from Firebase Console.
+    if (!firebaseConfig.projectId) {
+        console.warn("Frontend: __firebase_config.projectId is missing. Attempting to use hardcoded projectId.");
+        firebaseConfig.projectId = "drax-esports-leaderboard"; // <--- REPLACE WITH YOUR ACTUAL PROJECT ID
+        if (!firebaseConfig.projectId || firebaseConfig.projectId === 'YOUR_FIREBASE_PROJECT_ID_HERE') {
+             console.error("Frontend: Hardcoded projectId is also missing or placeholder. Please update it.");
+             // Fallback to a placeholder to prevent app crash, but it won't work.
+             firebaseConfig.projectId = "placeholder-project-id";
+        }
+    }
+    // --- END TEMPORARY OVERRIDE ---
+    ```
+
+**Nächste Schritte:**
+
+1.  **Speichere diesen aktualisierten Code** in deiner `index.html`-Datei.
+2.  **Lade die aktualisierte `index.html`-Datei auf GitHub hoch.**
+3.  **Überprüfe die Website:**
+    * Öffne deine Website-URL in einem Browser.
+    * **Leere den Browser-Cache** (Strg+F5 oder Cmd+Shift+R) oder öffne die Seite in einem Inkognito-Fenster.
+    * Scrolle zur "Most PR"-Sektion.
+
+Jetzt sollte der `projectId`-Fehler behoben sein, und die Website sollte versuchen, die PR-Punkte von Firestore zu laden. Wenn die "Most PR"-Sektion immer noch nicht angezeigt wird, mache bitte erneut einen Screenshot der **Browser-Konsole**, da dann ein anderes Problem vorliegen könnte (z.B. Authentifizierung auf der Website oder Firestore-Regeln für den Lesezugrif
